@@ -30,7 +30,8 @@
     "clean": "rimraf dest",
     "prepare": "yarn clean && yarn tsc",
     "typedoc": "typedoc src/index.ts",
-    "test": "yarn prepare && jest"
+    "test": "yarn prepare && jest",
+    "release": "yarn test && yarn publish"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.2",

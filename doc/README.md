@@ -66,7 +66,7 @@ export const Routes = {
   details: route(["view", ":id"]),
 };
 
-// route
+// "/view/:id"
 <Route path={Routes.details.template()} component={Details} />;
 
 export const Details = () => {
@@ -102,9 +102,11 @@ export const Users = () => {
 
 ```js
 const home = route("home");
-const settings = route("settings", { hasNested: true });
-const settingGlobal = settings.route("global");
-const settingAdvanced = settings.route("advanced");
+const settings = route("settings").createNestedRoutes((parent)=>({
+   global: parent.route("global");
+   advanced: parent.route("advanced");
+}));
+
 // App.js
 function App() {
   return (
@@ -114,26 +116,26 @@ function App() {
         element={<Home />}
       />
       <Route
-        path={settings.template()} // "/settings/*"
-        element={<Messages />}
+        path={settings.root.template()} // "/settings/*"
+        element={<Settings />}
       />
     </Routes>
   );
 }
 
-// Messages.js
-function Messages() {
+// Settings.js
+function Settings() {
   return (
     <Container>
       <Conversations />
 
       <Routes>
         <Route
-          path={settingGlobal.template()} // "global"
+          path={setting.global.template()} // "global"
           element={<Global />}
         />
         <Route
-          path={settingAdvanced.template()} // "advanced"
+          path={setting.advanced.template()} // "advanced"
           element={<Advanced />}
         />
       </Routes>
@@ -144,6 +146,19 @@ function Messages() {
 
 ### useMap
 
+This is useful for create breadcrumb
+
 ```js
-const routeMap = settingAdvanced.useMap(); // [{path:"settings",create=()=>"/settings"},{path:"advanced",create=()=>"/settings/advanced"}]
+const routeMap = setting.advanced.useMap(); // [{path:"settings",create=()=>"/settings"},{path:"advanced",create=()=>"/settings/advanced"}]
+
+return (
+  //antd
+  <Breadcrumb>
+    {routeMap.map(({ path, create }) => {
+      <Breadcrumb.Item key={path}>
+        <a href={create()}></a>
+      </Breadcrumb.Item>;
+    })}
+  </Breadcrumb>
+);
 ```

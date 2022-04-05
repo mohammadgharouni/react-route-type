@@ -9,29 +9,9 @@
 - [Options](interfaces/Options.md)
 - [Route](interfaces/Route.md)
 
-### Type aliases
-
-- [GetParam](modules.md#getparam)
-
 ### Functions
 
 - [route](modules.md#route)
-
-## Type aliases
-
-### GetParam
-
-Ƭ **GetParam**<`T`\>: `T` extends \`:${infer A}\` ? `A` : `never`
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `string` |
-
-#### Defined in
-
-[interfaces/types.ts:66](https://github.com/hosseinmd/react-route-type/blob/3deaec5/src/interfaces/types.ts#L66)
 
 ## Functions
 
@@ -59,4 +39,4 @@
 
 #### Defined in
 
-[route.ts:155](https://github.com/hosseinmd/react-route-type/blob/3deaec5/src/route.ts#L155)
+[route.ts:176](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/route.ts#L176)

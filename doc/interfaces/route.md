@@ -14,11 +14,14 @@
 ### Properties
 
 - [create](Route.md#create)
+- [title](Route.md#title)
 
 ### Methods
 
+- [createNestedRoutes](Route.md#createnestedroutes)
 - [route](Route.md#route)
 - [template](Route.md#template)
+- [useCreate](Route.md#usecreate)
 - [useMap](Route.md#usemap)
 - [useParams](Route.md#useparams)
 - [useQueryParams](Route.md#usequeryparams)
@@ -31,9 +34,45 @@
 
 #### Defined in
 
-[interfaces/types.ts:39](https://github.com/hosseinmd/react-route-type/blob/3deaec5/src/interfaces/types.ts#L39)
+[interfaces/types.ts:41](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L41)
+
+___
+
+### title
+
+• `Optional` **title**: `string`
+
+#### Defined in
+
+[interfaces/types.ts:38](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L38)
 
 ## Methods
+
+### createNestedRoutes
+
+▸ **createNestedRoutes**<`C`\>(`generator`): { `root`: [`Route`](Route.md)<`Parts`, `QueryParams`\>  } & `C`
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `C` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `generator` | (`parent`: [`Route`](Route.md)<`Parts`, `QueryParams`\>) => `C` |
+
+#### Returns
+
+{ `root`: [`Route`](Route.md)<`Parts`, `QueryParams`\>  } & `C`
+
+#### Defined in
+
+[interfaces/types.ts:59](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L59)
+
+___
 
 ### route
 
@@ -59,7 +98,7 @@
 
 #### Defined in
 
-[interfaces/types.ts:41](https://github.com/hosseinmd/react-route-type/blob/3deaec5/src/interfaces/types.ts#L41)
+[interfaces/types.ts:43](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L43)
 
 ___
 
@@ -73,7 +112,33 @@ ___
 
 #### Defined in
 
-[interfaces/types.ts:37](https://github.com/hosseinmd/react-route-type/blob/3deaec5/src/interfaces/types.ts#L37)
+[interfaces/types.ts:39](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L39)
+
+___
+
+### useCreate
+
+▸ **useCreate**<`T1`\>(`createParams`): `CreateFun`<`Exclude`<`Parts`, \`:${T1}\`\>, `QueryParams`\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T1` | extends `string` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `createParams` | `T1`[] |
+
+#### Returns
+
+`CreateFun`<`Exclude`<`Parts`, \`:${T1}\`\>, `QueryParams`\>
+
+#### Defined in
+
+[interfaces/types.ts:51](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L51)
 
 ___
 
@@ -87,21 +152,21 @@ ___
 
 #### Defined in
 
-[interfaces/types.ts:49](https://github.com/hosseinmd/react-route-type/blob/3deaec5/src/interfaces/types.ts#L49)
+[interfaces/types.ts:54](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L54)
 
 ___
 
 ### useParams
 
-▸ **useParams**(): `Params`<[`GetParam`](../modules.md#getparam)<`Parts`\>\>
+▸ **useParams**(): `Required`<`Params`<`PathParam`<`Parts`\>\>\>
 
 #### Returns
 
-`Params`<[`GetParam`](../modules.md#getparam)<`Parts`\>\>
+`Required`<`Params`<`PathParam`<`Parts`\>\>\>
 
 #### Defined in
 
-[interfaces/types.ts:48](https://github.com/hosseinmd/react-route-type/blob/3deaec5/src/interfaces/types.ts#L48)
+[interfaces/types.ts:50](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L50)
 
 ___
 
@@ -115,4 +180,4 @@ ___
 
 #### Defined in
 
-[interfaces/types.ts:46](https://github.com/hosseinmd/react-route-type/blob/3deaec5/src/interfaces/types.ts#L46)
+[interfaces/types.ts:48](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L48)
