@@ -17,7 +17,7 @@
 
 ### route
 
-▸ `Const` **route**<`T`, `Q`\>(`path`, `option?`): [`Route`](interfaces/Route.md)<`T`, `Q`\>
+▸ **route**<`T`, `Q`\>(`path`, `option?`): [`Route`](interfaces/Route.md)<`T`, `Q`\>
 
 #### Type parameters
 
@@ -39,4 +39,4 @@
 
 #### Defined in
 
-[route.ts:176](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/route.ts#L176)
+[route.ts:176](https://github.com/hosseinmd/react-route-type/blob/72127c6/src/route.ts#L176)

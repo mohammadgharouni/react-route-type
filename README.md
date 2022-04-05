@@ -1,3 +1,5 @@
+react-route-type / [Exports](modules.md)
+
 # react-route-type
 
 A collection of types and utility functions to facilitate typesafe routing in react-router-dom and react-router-native.
@@ -158,5 +160,24 @@ return (
       </Breadcrumb.Item>;
     })}
   </Breadcrumb>
+);
+```
+
+### useCreate
+
+This is useFull for where you have a dynamic param
+
+```js
+const routes = route("lang").createNestedRoutes((parent)=>({
+  about: parent.route("about");
+   price: parent.route("price");
+}));
+// current /en/about
+const createPrice = routes.root.price.useCreate();
+
+return (
+  <Link to={
+    createPrice() // /en/price
+  }>link to Price</Link>
 );
 ```

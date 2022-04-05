@@ -34,7 +34,7 @@
 
 #### Defined in
 
-[interfaces/types.ts:41](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L41)
+[interfaces/types.ts:41](https://github.com/hosseinmd/react-route-type/blob/72127c6/src/interfaces/types.ts#L41)
 
 ___
 
@@ -44,7 +44,7 @@ ___
 
 #### Defined in
 
-[interfaces/types.ts:38](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L38)
+[interfaces/types.ts:38](https://github.com/hosseinmd/react-route-type/blob/72127c6/src/interfaces/types.ts#L38)
 
 ## Methods
 
@@ -70,7 +70,7 @@ ___
 
 #### Defined in
 
-[interfaces/types.ts:59](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L59)
+[interfaces/types.ts:62](https://github.com/hosseinmd/react-route-type/blob/72127c6/src/interfaces/types.ts#L62)
 
 ___
 
@@ -98,7 +98,7 @@ ___
 
 #### Defined in
 
-[interfaces/types.ts:43](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L43)
+[interfaces/types.ts:43](https://github.com/hosseinmd/react-route-type/blob/72127c6/src/interfaces/types.ts#L43)
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 #### Defined in
 
-[interfaces/types.ts:39](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L39)
+[interfaces/types.ts:39](https://github.com/hosseinmd/react-route-type/blob/72127c6/src/interfaces/types.ts#L39)
 
 ___
 
@@ -138,7 +138,7 @@ ___
 
 #### Defined in
 
-[interfaces/types.ts:51](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L51)
+[interfaces/types.ts:51](https://github.com/hosseinmd/react-route-type/blob/72127c6/src/interfaces/types.ts#L51)
 
 ___
 
@@ -146,13 +146,15 @@ ___
 
 ▸ **useMap**(): { `path`: `string` \| `string`[] ; `title?`: `string` ; `create`: () => `string`  }[]
 
+This is useful for create breadcrumbs
+
 #### Returns
 
 { `path`: `string` \| `string`[] ; `title?`: `string` ; `create`: () => `string`  }[]
 
 #### Defined in
 
-[interfaces/types.ts:54](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L54)
+[interfaces/types.ts:57](https://github.com/hosseinmd/react-route-type/blob/72127c6/src/interfaces/types.ts#L57)
 
 ___
 
@@ -166,7 +168,7 @@ ___
 
 #### Defined in
 
-[interfaces/types.ts:50](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L50)
+[interfaces/types.ts:50](https://github.com/hosseinmd/react-route-type/blob/72127c6/src/interfaces/types.ts#L50)
 
 ___
 
@@ -180,4 +182,4 @@ ___
 
 #### Defined in
 
-[interfaces/types.ts:48](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L48)
+[interfaces/types.ts:48](https://github.com/hosseinmd/react-route-type/blob/72127c6/src/interfaces/types.ts#L48)

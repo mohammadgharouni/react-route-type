@@ -48,9 +48,16 @@ export interface Route<
   useQueryParams(): Partial<QueryParams>;
 
   useParams(): Required<Params<PathParam<Parts>>>;
+  /**
+   * This is useFull for where you have a dynamic param
+   * @param createParams the params which will fill from current route
+   */
   useCreate<T1 extends PathParam<Parts>>(
     createParams: T1[]
   ): CreateFun<Exclude<Parts, `:${T1}`>, QueryParams>;
+  /**
+   * This is useful for create breadcrumbs
+   */
   useMap(): {
     path: string | string[];
     title?: string;

@@ -23,7 +23,7 @@
 
 #### Defined in
 
-[interfaces/types.ts:30](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L30)
+[interfaces/types.ts:30](https://github.com/hosseinmd/react-route-type/blob/72127c6/src/interfaces/types.ts#L30)
 
 ___
 
@@ -33,4 +33,4 @@ ___
 
 #### Defined in
 
-[interfaces/types.ts:31](https://github.com/hosseinmd/react-route-type/blob/30eb8c1/src/interfaces/types.ts#L31)
+[interfaces/types.ts:31](https://github.com/hosseinmd/react-route-type/blob/72127c6/src/interfaces/types.ts#L31)
