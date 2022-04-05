@@ -48,6 +48,9 @@ export interface Route<
   useQueryParams(): Partial<QueryParams>;
 
   useParams(): Required<Params<PathParam<Parts>>>;
+  useCreate<T1 extends PathParam<Parts>>(
+    createParams: T1[]
+  ): CreateFun<Exclude<Parts, `:${T1}`>, QueryParams>;
   useMap(): {
     path: string | string[];
     title?: string;
