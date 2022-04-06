@@ -121,14 +121,13 @@ function internalRoute<T extends string, Q extends QueryParamDefault>(
      * A react hook to get query params
      */
     useQueryParams() {
-      const { search } = useLocation();
+      const { query: _query } = useLocation();
       return useMemo(
-        () =>
-          ({
-            ...query,
-            ...Object.fromEntries(new URLSearchParams(search).entries()),
-          } as any),
-        [search]
+        () => ({
+          ...query,
+          ...(_query as any),
+        }),
+        [query]
       );
     },
 
