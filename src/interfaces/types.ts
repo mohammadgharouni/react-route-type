@@ -24,6 +24,7 @@ export type QueryParamDefault = Record<
   | Array<string | Array<any> | Record<string, any> | null>
   | Record<string, any>
   | null
+  | undefined
 >;
 
 export interface Options<Q extends QueryParamDefault> {
