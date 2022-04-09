@@ -127,7 +127,7 @@ function internalRoute<T extends string, Q extends QueryParamDefault>(
           ...query,
           ...(_query as any),
         }),
-        [query]
+        [_query]
       );
     },
 
