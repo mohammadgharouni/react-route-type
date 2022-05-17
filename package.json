@@ -1,11 +1,11 @@
 {
   "name": "react-route-type",
-  "version": "4.2.3",
+  "version": "4.3.3",
   "description": "Type-safe helpers for React-Router",
-  "main": "./dest/index.js",
-  "types": "./dest/index.d.ts",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
   "files": [
-    "dest"
+    "src"
   ],
   "contributors": [
     {
