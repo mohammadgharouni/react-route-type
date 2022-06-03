@@ -46,7 +46,7 @@ export interface Route<
     option?: Options<QueryParams1>
   ) => Route<Parts1 | Parts, QueryParams & QueryParams1>;
 
-  useQueryParams(): Partial<QueryParams>;
+  useQueryParams(): Partial<QueryParameterAssignString<QueryParams>>;
 
   useParams(): Required<Params<PathParam<Parts>>>;
   /**
@@ -71,6 +71,9 @@ export interface Route<
   } & C;
 }
 
+type QueryParameterAssignString<T> = {
+  [P in keyof T]: T[P] | string;
+};
 /**
  * @ignore
  */
@@ -90,7 +93,9 @@ export type CreateFun<
 > = Parts extends `:${infer A}`
   ? (
       params: Record<PathParam<Parts>, string> & {
-        query?: Partial<QueryParams>;
+        query?: Partial<QueryParameterAssignString<QueryParams>>;
       }
     ) => string
-  : (params?: { query?: Partial<QueryParams> }) => string;
+  : (params?: {
+      query?: Partial<QueryParameterAssignString<QueryParams>>;
+    }) => string;
