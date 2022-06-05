@@ -1,6 +1,6 @@
 {
   "name": "react-route-type",
-  "version": "4.3.4",
+  "version": "4.3.5",
   "description": "Type-safe helpers for React-Router",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
