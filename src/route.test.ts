@@ -82,6 +82,16 @@ describe("Route", () => {
     );
   });
 
+  test("Empty route", () => {
+    const home = route("").createNestedRoutes((parent) => ({
+      view: parent.route("view"),
+      dashboard: parent.route("dashboard"),
+    }));
+    expect(home.view.template()).toBe("/view");
+    expect(home.dashboard.template()).toBe("/dashboard");
+    expect(home.root.template()).toBe("/*");
+  });
+
   test("Create", () => {
     expect(Routes[RouteNames.HOME].create()).toBe("/home");
 

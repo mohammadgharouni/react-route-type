@@ -46,7 +46,7 @@ function internalRoute<T extends string, Q extends QueryParamDefault>(
 
   let hasNested = false;
 
-  const paths = Array.isArray(path) ? path : [path];
+  const paths = (Array.isArray(path) ? path : [path]).filter(Boolean);
   if (__DEV__) {
     const error = paths.find((p) => p.includes("/"));
     if (error) {
@@ -62,10 +62,13 @@ function internalRoute<T extends string, Q extends QueryParamDefault>(
     path,
     title,
     template: () => {
-      let path = paths.slice(relatedFrom || 0).join("/");
+      let path = "";
+      if (paths.length > 0) {
+        path = paths.slice(relatedFrom || 0).join("/");
 
-      if (!relatedFrom) {
-        path = `/${path}`;
+        if (!relatedFrom) {
+          path = `/${path}`;
+        }
       }
 
       return path + (hasNested ? "/*" : "");
@@ -107,7 +110,7 @@ function internalRoute<T extends string, Q extends QueryParamDefault>(
     route(_path, options = {}) {
       const { query: _query, title } = options;
 
-      const _paths = Array.isArray(_path) ? _path : [_path];
+      const _paths = (Array.isArray(_path) ? _path : [_path]).filter(Boolean);
       const path = [...paths, ..._paths];
 
       return internalRoute(path, {
