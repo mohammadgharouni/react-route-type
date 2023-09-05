@@ -12,17 +12,10 @@
  */
 
 import { route } from "./route";
-import { render, fireEvent, waitFor, act } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import {
-  MemoryRouter,
-  Navigate,
-  Route,
-  Routes,
-  useNavigate,
-} from "react-router-dom";
-import React from "react";
+import { MemoryRouter, Navigate, Route, Routes } from "react-router-dom";
 
 jest.mock("react-router-dom", () => ({
   ...(jest.requireActual("react-router-dom") as any),
@@ -38,15 +31,7 @@ describe("Hooks", () => {
     return <p {...props} />;
   }
 
-  function RouteContainer({
-    initialPath,
-    template,
-    Comp,
-  }: {
-    initialPath: string;
-    template: string;
-    Comp: any;
-  }) {
+  function RouteContainer({ initialPath, template, Comp }: { initialPath: string; template: string; Comp: any }) {
     const [pathname, search] = initialPath.split("?");
     return (
       <MemoryRouter
@@ -55,7 +40,8 @@ describe("Hooks", () => {
             pathname: pathname,
             search: "?" + search,
           },
-        ]}>
+        ]}
+      >
         <Routes>
           <Route path={template} element={<Comp />} />
           <Route path={"/"} element={<Navigate to={initialPath} />} />
@@ -79,7 +65,7 @@ describe("Hooks", () => {
       const { id } = homeRoute.dashboard.root.useParams();
       return (
         <ResponseComp
-          data-testid='response'
+          data-testid="response"
           data-template={homeRoute.dashboard.root.template()}
           data-id={id}
           data-withqueryparam={create({
@@ -105,11 +91,7 @@ describe("Hooks", () => {
     const json = testRenderer.getByTestId("response");
 
     expect(json.getAttribute("data-id")).toBe("12345");
-    expect(json.getAttribute("data-withoutqueryparam")).toBe(
-      "/fa/home/12345/dashboard"
-    );
-    expect(json.getAttribute("data-withqueryparam")).toBe(
-      "/fa/home/12345/dashboard?type=type1"
-    );
+    expect(json.getAttribute("data-withoutqueryparam")).toBe("/fa/home/12345/dashboard");
+    expect(json.getAttribute("data-withqueryparam")).toBe("/fa/home/12345/dashboard?type=type1");
   });
 });

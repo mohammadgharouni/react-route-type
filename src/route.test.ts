@@ -58,9 +58,7 @@ const expectedTemplate = {
 describe("Route", () => {
   test("Template", () => {
     Object.keys(Routes).forEach((k) => {
-      expect(Routes[k as keyof typeof Routes].template()).toEqual(
-        expectedTemplate[k as keyof typeof expectedTemplate]
-      );
+      expect(Routes[k as keyof typeof Routes].template()).toEqual(expectedTemplate[k as keyof typeof expectedTemplate]);
     });
 
     expect(Routes[RouteNames.HOME].template()).toBe("/home");
@@ -77,9 +75,7 @@ describe("Route", () => {
     expect(home.dashboard.template()).toBe("dashboard");
     expect(home.view.root.template()).toBe("view/*");
     expect(home.view.notif.route("details").template()).toBe("notif/details");
-    expect(home.view.root.route(["details", ":id"]).template()).toBe(
-      "details/:id"
-    );
+    expect(home.view.root.route(["details", ":id"]).template()).toBe("details/:id");
   });
 
   test("Empty route", () => {
@@ -99,9 +95,7 @@ describe("Route", () => {
 
     expect(Routes[RouteNames.VIEW_DETAILS].create({ id: "3" })).toBe("/view/3");
 
-    expect(
-      Routes[RouteNames.VIEW_MORE_DETAILS].create({ id: "3", otherId: "4" })
-    ).toBe("/view/3/more/4");
+    expect(Routes[RouteNames.VIEW_MORE_DETAILS].create({ id: "3", otherId: "4" })).toBe("/view/3/more/4");
 
     expect(Routes[RouteNames.ONLY_PARAM].create({ param: "1" })).toBe("/1");
 
@@ -173,22 +167,3 @@ describe("Route", () => {
     ).toBe("/home/1");
   });
 });
-
-const tsRoute = route(["home", ":id"], { query: { search: "" } }).route(
-  ["list", ":name"],
-  {
-    query: { type: "" },
-  }
-);
-
-function Comp() {
-  const { id, name } = tsRoute.useParams();
-
-  //@ts-expect-error
-  const { invalidParam } = tsRoute.useParams();
-
-  const { search, type } = tsRoute.useQueryParams();
-
-  //@ts-expect-error
-  const { invalidQuery } = tsRoute.useQueryParams();
-}

@@ -1,4 +1,4 @@
-import { useLocation, useParams, useMatch } from "./reactRouter";
+import { useLocation, useParams } from "./reactRouter";
 
 /*
    Copyright Avero, LLC
@@ -13,13 +13,7 @@ import { useLocation, useParams, useMatch } from "./reactRouter";
    limitations under the License.
  */
 
-import {
-  PathParam,
-  Options,
-  QueryParamDefault,
-  Route,
-  CreateFun,
-} from "./interfaces/types";
+import { PathParam, Options, QueryParamDefault, Route, CreateFun } from "./interfaces/types";
 import { isParam } from "./interfaces/guards";
 import { stringify } from "qs";
 import { useMemo } from "react";
@@ -31,17 +25,13 @@ interface InternalOptions<Q extends QueryParamDefault> extends Options<Q> {
   parent?: InternalRoute<any, any>;
 }
 
-interface InternalRoute<T extends string, Q extends QueryParamDefault>
-  extends Route<T, Q> {
+interface InternalRoute<T extends string, Q extends QueryParamDefault> extends Route<T, Q> {
   path: T[] | T;
   option: InternalOptions<Q>;
   parent?: InternalRoute<any, any>;
 }
 
-function internalRoute<T extends string, Q extends QueryParamDefault>(
-  path: T[] | T,
-  option: InternalOptions<Q> = {}
-) {
+function internalRoute<T extends string, Q extends QueryParamDefault>(path: T[] | T, option: InternalOptions<Q> = {}) {
   const { query, relatedFrom, parent, title } = option;
 
   let hasNested = false;
@@ -50,9 +40,7 @@ function internalRoute<T extends string, Q extends QueryParamDefault>(
   if (__DEV__) {
     const error = paths.find((p) => p.includes("/"));
     if (error) {
-      throw new Error(
-        `react-route-type: Don't use '/' in route '${error}', use it like \`route(['home',':id'])\``
-      );
+      throw new Error(`react-route-type: Don't use '/' in route '${error}', use it like \`route(['home',':id'])\``);
     }
   }
 
@@ -80,18 +68,14 @@ function internalRoute<T extends string, Q extends QueryParamDefault>(
             return location.pathname;
           }
           if (isParam(part)) {
-            return (params as Record<string, string>)[
-              (part as string).slice(1)
-            ];
+            return (params as Record<string, string>)[(part as string).slice(1)];
           }
           return part;
         })
         .join("/")}`;
 
       const queryString =
-        Object.keys(params.query || {}).length === 0
-          ? ""
-          : stringify(params.query, { encode: false });
+        Object.keys(params.query || {}).length === 0 ? "" : stringify(params.query, { encode: false });
 
       return queryString ? `${baseUrl}?${queryString}` : baseUrl;
     }) as CreateFun<T, Q>,
@@ -135,16 +119,12 @@ function internalRoute<T extends string, Q extends QueryParamDefault>(
     },
 
     useParams() {
-      return useParams<PathParam<T>>() as unknown as ReturnType<
-        InternalRoute<T, Q>["useParams"]
-      >;
+      return useParams<PathParam<T>>() as unknown as ReturnType<InternalRoute<T, Q>["useParams"]>;
     },
     useMap() {
       const match = result.useParams();
 
-      function generateMap(
-        _routes?: InternalRoute<any, any>
-      ): ReturnType<InternalRoute<T, Q>["useMap"]> {
+      function generateMap(_routes?: InternalRoute<any, any>): ReturnType<InternalRoute<T, Q>["useMap"]> {
         if (!_routes) {
           return [];
         }
@@ -175,7 +155,5 @@ function internalRoute<T extends string, Q extends QueryParamDefault>(
   return result;
 }
 
-export const route: <T extends string, Q extends QueryParamDefault>(
-  path: T[] | T,
-  option?: Options<Q>
-) => Route<T, Q> = internalRoute;
+export const route: <T extends string, Q extends QueryParamDefault>(path: T[] | T, option?: Options<Q>) => Route<T, Q> =
+  internalRoute;

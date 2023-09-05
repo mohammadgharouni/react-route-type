@@ -20,11 +20,7 @@ type Params<Key extends string = string> = {
  */
 export type QueryParamDefault = Record<
   string,
-  | string
-  | Array<string | Array<any> | Record<string, any> | null>
-  | Record<string, any>
-  | null
-  | undefined
+  string | Array<string | Array<any> | Record<string, any> | null> | Record<string, any> | null | undefined
 >;
 
 export interface Options<Q extends QueryParamDefault> {
@@ -32,10 +28,7 @@ export interface Options<Q extends QueryParamDefault> {
   title?: string;
 }
 
-export interface Route<
-  Parts extends string,
-  QueryParams extends QueryParamDefault
-> {
+export interface Route<Parts extends string, QueryParams extends QueryParamDefault> {
   title?: string;
   template(): string;
 
@@ -53,9 +46,7 @@ export interface Route<
    * This is useFull for where you have a dynamic param
    * @param createParams the params which will fill from current route
    */
-  useCreate<T1 extends PathParam<Parts>>(
-    createParams: T1[]
-  ): CreateFun<Exclude<Parts, `:${T1}`>, QueryParams>;
+  useCreate<T1 extends PathParam<Parts>>(createParams: T1[]): CreateFun<Exclude<Parts, `:${T1}`>, QueryParams>;
   /**
    * This is useful for create breadcrumbs
    */
@@ -64,9 +55,7 @@ export interface Route<
     title?: string;
     create(): string;
   }[];
-  createNestedRoutes: <C>(
-    generator: (parent: Route<Parts, QueryParams>) => C
-  ) => {
+  createNestedRoutes: <C>(generator: (parent: Route<Parts, QueryParams>) => C) => {
     root: Route<Parts, QueryParams>;
   } & C;
 }
@@ -87,15 +76,10 @@ export type PathPart<T extends string> = string | PathParam<T>;
 /**
  * @ignore
  */
-export type CreateFun<
-  Parts extends string,
-  QueryParams extends QueryParamDefault
-> = Parts extends `:${infer A}`
+export type CreateFun<Parts extends string, QueryParams extends QueryParamDefault> = Parts extends `:${infer _A}`
   ? (
       params: Record<PathParam<Parts>, string> & {
         query?: Partial<QueryParameterAssignString<QueryParams>>;
       }
     ) => string
-  : (params?: {
-      query?: Partial<QueryParameterAssignString<QueryParams>>;
-    }) => string;
+  : (params?: { query?: Partial<QueryParameterAssignString<QueryParams>> }) => string;

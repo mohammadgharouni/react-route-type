@@ -12,17 +12,10 @@
  */
 
 import { route } from "./route";
-import { render, fireEvent, waitFor, act } from "@testing-library/react";
+import { render, fireEvent, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import {
-  MemoryRouter,
-  Navigate,
-  Route,
-  Routes,
-  useNavigate,
-} from "react-router-dom";
-import React from "react";
+import { MemoryRouter, Navigate, Route, Routes, useNavigate } from "react-router-dom";
 
 jest.mock("react-router-dom", () => ({
   ...(jest.requireActual("react-router-dom") as any),
@@ -37,38 +30,13 @@ const homeRoute = route(["home", ":id"], {
   query: { search: "", withDefault: "default" },
   title: "Home",
 });
-const tsRoute = homeRoute.route(["list", ":name"], {
-  query: { type: "" },
-  title: "List",
-});
-
-function Comp() {
-  // typescript
-  const { id, name } = tsRoute.useParams();
-
-  //@ts-expect-error
-  const { invalidParam } = tsRoute.useParams();
-
-  const { search, type } = tsRoute.useQueryParams();
-
-  //@ts-expect-error
-  const { invalidQuery } = tsRoute.useQueryParams();
-}
 
 describe("Hooks", () => {
   function ResponseComp(props: any) {
     return <p {...props} />;
   }
 
-  function RouteContainer({
-    initialPath,
-    template,
-    Comp,
-  }: {
-    initialPath: string;
-    template: string;
-    Comp: any;
-  }) {
+  function RouteContainer({ initialPath, template, Comp }: { initialPath: string; template: string; Comp: any }) {
     const [pathname, search] = initialPath.split("?");
     return (
       <MemoryRouter
@@ -108,11 +76,7 @@ describe("Hooks", () => {
     const navigate = useNavigate();
 
     return (
-      <button
-        data-testid="navigate"
-        onClick={() => navigate(initialPath)}
-        title={initialPath}
-      >
+      <button data-testid="navigate" onClick={() => navigate(initialPath)} title={initialPath}>
         {initialPath}
       </button>
     );
@@ -123,13 +87,7 @@ describe("Hooks", () => {
       const { id } = homeRoute.useParams();
       const { search, withDefault } = homeRoute.useQueryParams();
 
-      return (
-        <ResponseComp
-          {...{ id, search }}
-          data-withdefault={withDefault}
-          data-testid="response"
-        />
-      );
+      return <ResponseComp {...{ id, search }} data-withdefault={withDefault} data-testid="response" />;
     }
 
     const testRenderer = render(
@@ -228,9 +186,7 @@ describe("Hooks", () => {
 
     expect(json.getAttribute("data-0")).toBe("/home/12345");
     expect(json.getAttribute("data-1")).toBe("/home/12345/dashboard");
-    expect(json.getAttribute("data-2")).toBe(
-      "/home/12345/dashboard/userDashboard"
-    );
+    expect(json.getAttribute("data-2")).toBe("/home/12345/dashboard/userDashboard");
   });
 
   test("route title", () => {
