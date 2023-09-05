@@ -2,8 +2,8 @@
   "name": "react-route-type",
   "version": "4.3.5",
   "description": "Type-safe helpers for React-Router",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "files": [
     "src",
     "dist"
